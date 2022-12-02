@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use DateTimeImmutable;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ActionController extends AbstractController
 {
+    // Create Article
     #[Route('/article/create', name: 'app_article_create', methods: ['GET', 'POST'])]
     public function createArticle(Request $request, ArticleRepository $articleRepository): Response
     {

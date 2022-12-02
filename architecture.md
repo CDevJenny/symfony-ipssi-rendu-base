@@ -35,15 +35,15 @@
 
 ## Utilisateur
 
--   id
--   nom
--   prénom
--   mail
--   mot de passe
--   rôle (acheteur, vendeur ou admin)
--   (isDeleted?)
--   createdAt (timestamp)
--   updatedAt (timestamp)
+-  (done) id
+-  (done) nom
+-  (done) prénom
+-  (done) mail
+-  (done) mot de passe
+-  (done) rôle (acheteur, vendeur ou admin)
+-  (done) isActive (boolean)
+-  (done) createdAt (timestamp)
+-  (done) updatedAt (timestamp)
 
 ---
 

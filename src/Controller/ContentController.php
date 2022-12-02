@@ -21,22 +21,22 @@ class ContentController extends AbstractController
         ]);
     }
 
-    // Articles
+    // List Articles
     #[Route('/article', name: 'app_article')]
     public function getArticles(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAllPublished();
 
-        return $this->render('content/index.html.twig', [
+        return $this->render('content/article/index.html.twig', [
             'articles' => $articles,
         ]);
     }
 
-    // Article
+    // Show Article
     #[Route('/article/{id}', name: 'app_article_show')]
-    public function getProduct(Article $article): Response
+    public function getArticle(Article $article): Response
     {
-        return $this->render('content/article/article.html.twig', [
+        return $this->render('content/article/show.html.twig', [
             'article' => $article,
         ]);
     }
