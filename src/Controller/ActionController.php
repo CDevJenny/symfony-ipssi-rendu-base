@@ -3,10 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Category;
-use App\Form\CategoryType;
 use App\Repository\ArticleRepository;
-use App\Repository\CategoryRepository;
 use DateTimeImmutable;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,11 +21,13 @@ class ActionController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
-        // $user = $this->getUser();
+        $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $article->setAuthor($user);
-            $article->setIsPublished(false);
+            $isPublished = (bool) $form['isPublished']->getData();
+
+            $article->setAuthor($user);
+            $article->setIsPublished($isPublished);
             $article->setCreatedAt(new DateTimeImmutable('now'));
             $articleRepository->save($article, true);
 
@@ -39,5 +38,44 @@ class ActionController extends AbstractController
             'article' => $article,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/article/edit/{id}', name: 'app_article_edit', methods: ['GET', 'POST'])]
+    public function editProduct(Request $request, int $id, ArticleRepository $articleRepository): Response
+    {
+        $article = $articleRepository->find($id);
+        if (!$article instanceof Article) {
+            return $this->redirectToRoute('app_article', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $isPublished = (bool) $form['isPublished']->getData();
+
+
+            $article->setUpdatedAt(new DateTimeImmutable('now'));
+            $article->setIsPublished($isPublished);
+            $articleRepository->save($article, true);
+
+            return $this->redirectToRoute('app_article_show', ["id" => $article->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('content/article/edit.html.twig', [
+            'article' => $article,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/article/delete/{id}', name: 'app_article_delete', methods: ['GET', 'POST'])]
+    public function deleteArticle(int $id, ArticleRepository $articleRepository)
+    {
+        $article = $articleRepository->find($id);
+        if ($article instanceof Article) {
+            $articleRepository->remove($article, true);
+        }
+
+        return $this->redirectToRoute('app_article');
     }
 }

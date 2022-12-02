@@ -9,7 +9,14 @@
 			<h2>
 				<a href="{{path('app_article_show', {'id': article.id} )}}">{{ article.title }}</a>
 			</h2>
-			<p>{{ article.content }}</p>
+			<p class="content">{{ article.content }}</p>
+			{% if article.author %}
+				<p class="author">
+					Author:
+					{{ article.author.name }}
+					{{ article.author.firstname }}
+				</p>
+			{% endif %}
 		</section>
 	{% endfor %}
 {% endblock %}

@@ -34,9 +34,14 @@ class ContentController extends AbstractController
 
     // Show Article
     #[Route('/article/{id}', name: 'app_article_show')]
-    public function getArticle(Article $article): Response
+    public function getArticle(int $id, ArticleRepository $articleRepository): Response
     {
-        return $this->render('content/article/show.html.twig', [
+        $article = $articleRepository->find($id);
+        if (!$article instanceof Article) {
+            return $this->redirectToRoute('app_article');
+        }
+
+        return $this->render('content/article/article.html.twig', [
             'article' => $article,
         ]);
     }

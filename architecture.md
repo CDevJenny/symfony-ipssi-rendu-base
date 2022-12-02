@@ -35,27 +35,27 @@
 
 ## Utilisateur
 
--  (done) id
--  (done) nom
--  (done) prénom
--  (done) mail
--  (done) mot de passe
--  (done) rôle (acheteur, vendeur ou admin)
--  (done) isActive (boolean)
--  (done) createdAt (timestamp)
--  (done) updatedAt (timestamp)
+-   (done) id
+-   (done) nom
+-   (done) prénom
+-   (done) mail
+-   (done) mot de passe
+-   (done) rôle (acheteur, vendeur ou admin)
+-   (done) isActive (boolean)
+-   (done) createdAt (timestamp)
+-   (done) updatedAt (timestamp)
 
 ---
 
 ## Article
 
--   id (done)
--   titre (done)
--   contenu (done)
--   auteur (à faire)
--   isPublished (done)
--   createdAt (done)
--   updatedAt (done)
+-   (done) id
+-   (done) titre
+-   (done) contenu
+-   (done) auteur
+-   (done) isPublished
+-   (done) createdAt
+-   (done) updatedAt
 
 ## Catégorie (table générique)
 
@@ -79,13 +79,13 @@
 
 ## UserController
 
--   Register
+-   (done) Register
 -   Profile
 
 ## SecurityController
 
--   Login
--   Logout
+-   (done) Login
+-   (done) Logout
 
 ## AdminController
 
@@ -97,14 +97,20 @@
 
 ## ContentController
 
--   Index
+-   (done) Index
 -   Show
 
 ## ActionController
 
 -   Add
+    -   (done) Article
+    -   Produit
 -   Edit
+    -   (done) Article
+    -   Produit
 -   Delete
+    -   (done) Article
+    -   Produit
 
 ## CartController
 
@@ -116,11 +122,14 @@
 
 ## Accueil
 
--   3 derniers articles
+-   (done) 3 derniers articles
 
 ## Articles
 
 -   Lister tous les articles (avec filtre, etc.)
+    -   Filtre
+    -   (done) Afficher tous les articles
+    -   Création, édition et suppression sur dashboard admin
 
 ## Produits
 
