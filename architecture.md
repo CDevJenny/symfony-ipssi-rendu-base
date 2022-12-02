@@ -49,13 +49,13 @@
 
 ## Article
 
--   id
--   titre
--   contenu
--   auteur
--   isPublished (boolean)
--   createdAt (timestamp)
--   updatedAt (timestamp)
+-   id (done)
+-   titre (done)
+-   contenu (done)
+-   auteur (à faire)
+-   isPublished (done)
+-   createdAt (done)
+-   updatedAt (done)
 
 ## Catégorie (table générique)
 

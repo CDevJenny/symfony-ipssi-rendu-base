@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Amazing - Articles
+{% endblock %}
+
+{% block body %}
+	{% for article in articles %}
+		<section>
+			<h2>
+				<a href="{{path('app_article_show', {'id': article.id} )}}">{{ article.title }}</a>
+			</h2>
+			<p>{{ article.content }}</p>
+		</section>
+	{% endfor %}
+{% endblock %}
