@@ -2,8 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,15 +30,37 @@ class ProductType extends AbstractType
                     'placeholder' => 'Enter product description',
                 ],
             ])
-            ->add('image')
-            ->add('quantity')
-            ->add('brand')
-            ->add('isPublished')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('deletedAt')
-            ->add('category')
-            ->add('seller')
+            ->add('image', TextType::class, [
+                'label' => 'Image link',
+                'attr' => [
+                    'placeholder' => 'Enter image link',
+                ],
+            ])
+            ->add('quantity', NumberType::class, [
+                'label' => 'Quantity',
+                'attr' => [
+                    'placeholder' => 'Quantity',
+                ],
+            ])
+            ->add('brand', TextType::class, [
+                'label' => 'Brand',
+                'attr' => [
+                    'placeholder' => 'Enter brand name',
+                ],
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'choice_value' => 'id',
+                'label' => 'Category',
+                'attr' => [
+                    'placeholder' => 'Select product category',
+                ],
+            ])
+            ->add('isPublished', CheckboxType::class, [
+                "label" => "Publish",
+                "required" => false
+            ])
         ;
     }
 

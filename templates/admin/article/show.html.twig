@@ -3,40 +3,39 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+<h1>Article</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-            <tr>
-                <th>IsPublished</th>
-                <td>{{ article.isPublished ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt}}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ article.updatedAt}}</td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ article.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ article.title }}</td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td>{{ article.content }}</td>
+        </tr>
+        <tr>
+            <th>IsPublished</th>
+            <td>{{ article.isPublished ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ article.createdAt}}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ article.updatedAt}}</td>
+        </tr>
+    </tbody>
+</table>
 
-    <a href="{{ path('app_admin_article_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('admin/article/delete_form.html.twig') }}
+<ul class="list-center">
+    <li><a href="{{ path('app_admin_article_index') }}">back to list</a></li>
+    <li><a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a></li>
+</ul>
 {% endblock %}
