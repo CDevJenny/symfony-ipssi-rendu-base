@@ -23,7 +23,7 @@ class AdminContentController extends AbstractController
     #[Route('', name: 'app_admin_dashboard')]
     public function index(): Response
     {
-        if($this->getUser()->getRoles() == ['ROLE_ADMIN']) {
+        if ($this->getUser()->getRoles() == ['ROLE_ADMIN']) {
             return $this->render('admin/dashboard.html.twig', [
                 'admin' => $this->getUser(),
             ]);
@@ -102,7 +102,7 @@ class AdminContentController extends AbstractController
     #[Route('/user/{id}', name: 'app_admin_user_show', methods: ['GET'])]
     public function showUser(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('admin/user/show.html.twig', [
             'user' => $user,
         ]);
     }

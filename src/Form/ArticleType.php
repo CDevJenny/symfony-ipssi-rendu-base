@@ -19,7 +19,11 @@ class ArticleType extends AbstractType
                 'label' => 'Titre',
             ])
             ->add('content', TextareaType::class, [
-                "label" => "Contenu de l'article"
+                "label" => "Contenu de l'article",
+                "attr" => [
+                    "rows" => 20,
+                    "cols" => 100,
+                ]
             ])
             ->add('isPublished', CheckboxType::class, [
                 "label" => "Publish",

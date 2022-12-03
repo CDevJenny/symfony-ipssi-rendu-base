@@ -49,7 +49,7 @@ class AdminActionController extends AbstractController
     }
 
     // Edit Article
-    #[Route('/edit/{id}', name: 'app_admin_article_edit', methods: ['GET', 'POST'])]
+    #[Route('/article/edit/{id}', name: 'app_admin_article_edit', methods: ['GET', 'POST'])]
     public function editArticle(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
@@ -69,10 +69,10 @@ class AdminActionController extends AbstractController
     }
 
     // Delete Article
-    #[Route('/delete/{id}', name: 'app_admin_article_delete', methods: ['POST'])]
+    #[Route('/article/delete/{id}', name: 'app_admin_article_delete', methods: ['POST'])]
     public function deleteArticle(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $articleRepository->remove($article, true);
         }
 
@@ -124,7 +124,7 @@ class AdminActionController extends AbstractController
     #[Route('/category/delete/{id}', name: 'app_admin_category_delete', methods: ['POST'])]
     public function deleteCategory(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
         }
 
@@ -179,7 +179,7 @@ class AdminActionController extends AbstractController
     #[Route('/product/delete/{id}', name: 'app_admin_product_delete', methods: ['POST'])]
     public function deleteProduct(Request $request, Product $product, ProductRepository $productRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $productRepository->remove($product, true);
         }
 
@@ -232,7 +232,7 @@ class AdminActionController extends AbstractController
     #[Route('/user/delete/{id}', name: 'app_admin_user_delete', methods: ['POST'])]
     public function deleteUser(Request $request, User $user, UserRepository $userRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user, true);
         }
 
