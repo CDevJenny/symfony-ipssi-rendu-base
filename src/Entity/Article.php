@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Carbon\Carbon;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,10 +25,10 @@ class Article
     private ?bool $isPublished = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private Carbon|string|null $createdAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private Carbon|string|null $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
@@ -74,24 +75,27 @@ class Article
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): Carbon|string|null
     {
-        return $this->createdAt;
+        return Carbon::create($this->createdAt)->format('d/m/Y');
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(Carbon $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): Carbon|string|null
     {
-        return $this->updatedAt;
+        if (! is_null($this->updatedAt)) {
+            return Carbon::create($this->updatedAt)->format('d/m/Y');
+        }
+        return '';
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
+    public function setUpdatedAt(?Carbon $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 

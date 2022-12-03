@@ -14,21 +14,17 @@ class ContentController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findAllPublished(3);
-
         return $this->render('content/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $articleRepository->findAllPublished(3),
         ]);
     }
 
     // List Articles
-    #[Route('/article', name: 'app_article')]
+    #[Route('/articles', name: 'app_article_index')]
     public function getArticles(ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findAllPublished();
-
         return $this->render('content/article/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $articleRepository->findAllPublished(),
         ]);
     }
 
@@ -41,7 +37,7 @@ class ContentController extends AbstractController
             return $this->redirectToRoute('app_article');
         }
 
-        return $this->render('content/article/article.html.twig', [
+        return $this->render('content/article/show.html.twig', [
             'article' => $article,
         ]);
     }
