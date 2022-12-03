@@ -1,0 +1,31 @@
+form {
+    min-width: 250px;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form .form-group:not(.form-checkbox) {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+form .form-group.form-checkbox {
+    display: flex;
+    gap: 5px;
+}
+
+form .form-group label,
+form .form-group input:not([type="checkbox"]) {
+    width: 100%;
+}
+
+form .form-group .form-errors {
+    color: red;
+    font-size: .85em;
+}

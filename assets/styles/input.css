@@ -1,0 +1,37 @@
+input,
+textarea,
+select,
+option {
+    padding: .75em;
+    border: 1px solid #eee;
+    border-bottom: 2px solid #aaa;
+    border-radius: 3px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-bottom: 2px solid var(--main-color);
+}
+
+button {
+    cursor: pointer;
+    min-width: 150px;
+    padding: .75em;
+    color: var(--revert-font-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+    transition: ease-in-out .15s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    font-style: italic;
+    background: #bbb;
+    border: 1px solid #bbb;
+}
+
+button:not(:disabled):hover {
+    box-shadow: 0 0 4px 1px var(--main-color);
+}
