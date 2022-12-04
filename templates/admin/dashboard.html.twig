@@ -47,7 +47,7 @@
 			<ul>
 				{% for newCategory in category.list %}
 				<li>{{ newCategory.id }}</li>
-				<li>{{ newCategory.title }}</li>
+				<li>{{ newCategory.name }}</li>
 				{% else %}
 				<p>no records found</p>
 				{% endfor %}
@@ -62,7 +62,7 @@
 			<ul>
 				{% for newProduct in product.list %}
 				<li>{{ newProduct.id }}</li>
-				<li>{{ newProduct.title }}</li>
+				<li>{{ newProduct.name }}</li>
 				{% else %}
 				<p>no records found</p>
 				{% endfor %}
@@ -77,7 +77,7 @@
 			<ul>
 				{% for newUser in user.list %}
 				<li>{{ newUser.id }}</li>
-				<li>{{ newUser.title }}</li>
+				<li>{{ newUser.name }}</li>
 				{% else %}
 				<p>no records found</p>
 				{% endfor %}
