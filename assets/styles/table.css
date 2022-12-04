@@ -1,0 +1,30 @@
+table {
+    height: auto;
+    width: 100%;
+    border-spacing: 0;
+    box-shadow: 0px 0px 15px #b8b8b8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+table thead {
+    color: var(--revert-font-color);
+    background-color: rgb(149, 149, 149);
+}
+
+table th,
+table td {
+    padding: 1em;
+    text-align: center;
+}
+
+table td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+table tr {
+    border-spacing: 5px 1rem;
+}
