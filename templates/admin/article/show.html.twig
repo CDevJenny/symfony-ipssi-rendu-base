@@ -1,41 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}Article
+{% endblock %}
 
 {% block body %}
-<h1>Article</h1>
+	<h1>Article</h1>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ article.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
-            <td>{{ article.title }}</td>
-        </tr>
-        <tr>
-            <th>Content</th>
-            <td>{{ article.content }}</td>
-        </tr>
-        <tr>
-            <th>IsPublished</th>
-            <td>{{ article.isPublished ? 'Yes' : 'No' }}</td>
-        </tr>
-        <tr>
-            <th>CreatedAt</th>
-            <td>{{ article.createdAt}}</td>
-        </tr>
-        <tr>
-            <th>UpdatedAt</th>
-            <td>{{ article.updatedAt}}</td>
-        </tr>
-    </tbody>
-</table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ article.id }}</td>
+			</tr>
+			<tr>
+				<th>Image</th>
+				<td>
+					<img src="{{ article.image }}" style="max-width: 750px; max-height: 500px;">
+				</td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td>{{ article.title }}</td>
+			</tr>
+			<tr>
+				<th>Content</th>
+				<td>{{ article.content }}</td>
+			</tr>
+			<tr>
+				<th>IsPublished</th>
+				<td>{{ article.isPublished ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>CreatedAt</th>
+				<td>{{ article.createdAt}}</td>
+			</tr>
+			<tr>
+				<th>UpdatedAt</th>
+				<td>{{ article.updatedAt}}</td>
+			</tr>
+		</tbody>
+	</table>
 
-<ul class="list-center">
-    <li><a href="{{ path('app_admin_article_index') }}">back to list</a></li>
-    <li><a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a></li>
-</ul>
+	<ul class="list-center">
+		<li>
+			<a href="{{ path('app_admin_article_index') }}">back to list</a>
+		</li>
+		<li>
+			<a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
+		</li>
+	</ul>
 {% endblock %}

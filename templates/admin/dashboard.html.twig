@@ -5,20 +5,85 @@
 
 {% block body %}
 
-	<h1>Dashboard admin</h1>
-	<ul class="list-center">
-		<li>
-			<a href="{{path('app_admin_article_index')}}">Articles</a>
-		</li>
-		<li>
-			<a href="{{path('app_admin_category_index')}}">Categories</a>
-		</li>
-		<li>
-			<a href="{{path('app_admin_product_index')}}">Products</a>
-		</li>
-		<li>
-			<a href="{{path('app_admin_user_index')}}">Users</a>
-		</li>
-	</ul>
+<style>
+	.admin-stats {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-column-gap: 1em;
+	}
+
+	.admin-stats li div {
+		display: flex;
+		gap: 1em;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+</style>
+
+<h1>Dashboard admin</h1>
+<ul class="admin-stats">
+	<li>
+		<div class="articles">
+			<h2>Articles</h2>
+			<a href="{{path('app_admin_article_index')}}">Show all articles</a>
+			<p>Total {{ article.count }}</p>
+			<ul>
+				{% for newArticle in article.list %}
+				<li>{{ newArticle.id }}</li>
+				<li>{{ newArticle.title }}</li>
+				{% else %}
+				<p>no records found</p>
+				{% endfor %}
+			</ul>
+		</div>
+	</li>
+	<li>
+		<div class="categories">
+			<h2>Categories</h2>
+			<a href="{{path('app_admin_category_index')}}">Show all categories</a>
+			<p>Total {{ category.count }}</p>
+			<ul>
+				{% for newCategory in category.list %}
+				<li>{{ newCategory.id }}</li>
+				<li>{{ newCategory.title }}</li>
+				{% else %}
+				<p>no records found</p>
+				{% endfor %}
+			</ul>
+		</div>
+	</li>
+	<li>
+		<div class="products">
+			<h2>Products</h2>
+			<a href="{{path('app_admin_product_index')}}">Show all products</a>
+			<p>Total {{ product.count }}</p>
+			<ul>
+				{% for newProduct in product.list %}
+				<li>{{ newProduct.id }}</li>
+				<li>{{ newProduct.title }}</li>
+				{% else %}
+				<p>no records found</p>
+				{% endfor %}
+			</ul>
+		</div>
+	</li>
+	<li>
+		<div class="users">
+			<h2>Users</h2>
+			<a href="{{path('app_admin_user_index')}}">Show all users</a>
+			<p>Total {{ user.count }}</p>
+			<ul>
+				{% for newUser in user.list %}
+				<li>{{ newUser.id }}</li>
+				<li>{{ newUser.title }}</li>
+				{% else %}
+				<p>no records found</p>
+				{% endfor %}
+			</ul>
+		</div>
+	</li>
+</ul>
 
 {% endblock %}

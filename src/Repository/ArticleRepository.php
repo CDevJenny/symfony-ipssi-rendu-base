@@ -53,4 +53,13 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function getTotalCount()
+    {
+        return $this->createQueryBuilder('article')
+            ->select('count(article.id)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }

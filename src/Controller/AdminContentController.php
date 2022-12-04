@@ -21,11 +21,28 @@ class AdminContentController extends AbstractController
 {
     // Admin Dashboard
     #[Route('', name: 'app_admin_dashboard')]
-    public function index(): Response
+    public function index(ArticleRepository $articleRepository, ProductRepository $productRepository, CategoryRepository $categoryRepository, UserRepository $userRepository): Response
     {
         if ($this->getUser()->getRoles() == ['ROLE_ADMIN']) {
             return $this->render('admin/dashboard.html.twig', [
                 'admin' => $this->getUser(),
+                'article' => [
+                    'count' => $articleRepository->getTotalCount(),
+                    'list' => $articleRepository->findAllPublished(5) // todo: récupérer même les articles non publiés
+
+                ],
+                'category' => [
+                    'count' => $categoryRepository->getTotalCount(),
+                    'list' => $categoryRepository->findAll()
+                ],
+                'product' => [
+                    'count' => $productRepository->getTotalCount(),
+                    'list' => $productRepository->findAll()
+                ],
+                'user' => [
+                    'count' => $productRepository->getTotalCount(),
+                    'list' => $productRepository->findAll()
+                ]
             ]);
         }
 

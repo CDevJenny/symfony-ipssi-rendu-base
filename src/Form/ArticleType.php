@@ -16,13 +16,22 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre',
+                'label' => 'Title',
+                "attr" => [
+                    "placeholder" => "Title"
+                ]
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Contenu de l'article",
                 "attr" => [
                     "rows" => 20,
                     "cols" => 100,
+                ]
+            ])
+            ->add('image', TextType::class, [
+                'label' => 'Image link',
+                "attr" => [
+                    "placeholder" => "Image link"
                 ]
             ])
             ->add('isPublished', CheckboxType::class, [
